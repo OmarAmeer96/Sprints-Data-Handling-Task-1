@@ -23,7 +23,7 @@ This project is a Flutter application that fetches employee data from a remote A
 
 | Loading State                             | Employee List                          |
 | ----------------------------------------- | -------------------------------------- |
-| ![Loading State](https://github.com/user-attachments/assets/2be2ee42-1d5d-4daf-ac8d-ea71e049bafe) |  ![Employee List](https://github.com/user-attachments/assets/b1350fa6-6baf-4154-8b9d-1aa7309ca6e7) |
+| ![Loading State](https://github.com/user-attachments/assets/2be2ee42-1d5d-4daf-ac8d-ea71e049bafe) |  ![Employee List](https://github.com/user-attachments/assets/7d199b2f-3642-4f9a-8d72-08f7916efd18) |
 
 ---
 

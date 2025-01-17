@@ -21,7 +21,7 @@ class _EmployeeListViewState extends State<EmployeeListView> {
   @override
   void initState() {
     super.initState();
-    _futureEmployees = _employeeService.fetchEmployees();
+    _futureEmployees = _employeeService.fetchChchedEmployees();
   }
 
   @override
@@ -29,7 +29,7 @@ class _EmployeeListViewState extends State<EmployeeListView> {
     return RefreshIndicator(
       onRefresh: () async {
         setState(() {
-          _futureEmployees = _employeeService.fetchEmployees();
+          _futureEmployees = _employeeService.fetchEmployeesFromServer();
         });
       },
       child: Scaffold(

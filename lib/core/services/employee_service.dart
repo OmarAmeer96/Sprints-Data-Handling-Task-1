@@ -7,11 +7,31 @@ import 'dart:convert';
 
 class EmployeeService {
   final Dio _dio = Dio();
+  String endPoint = 'https://mocki.io/v1/c2688074-6ee3-4ea6-b60f-a57bcbc3253e';
 
-  Future<List<Employee>> fetchEmployees() async {
+  Future<List<Employee>> fetchChchedEmployees() async {
     try {
-      final response = await _dio
-          .get('https://mocki.io/v1/c2688074-6ee3-4ea6-b60f-a57bcbc3253e');
+      final cachedEmployees = await _getCachedEmployees();
+      if (cachedEmployees.isNotEmpty) {
+        return cachedEmployees;
+      } else {
+        await fetchEmployeesFromServer();
+      }
+    } catch (e) {
+      final cachedEmployees = await _getCachedEmployees();
+      if (cachedEmployees.isNotEmpty) {
+        return cachedEmployees;
+      } else {
+        log('Failed to load employees: $e');
+        throw Exception('Failed to load employees: $e');
+      }
+    }
+    return [];
+  }
+
+  Future<List<Employee>> fetchEmployeesFromServer() async {
+    try {
+      final response = await _dio.get(endPoint);
       if (response.statusCode == 200) {
         List<dynamic> data = response.data['data'];
         List<Employee> employees =
